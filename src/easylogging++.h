@@ -286,6 +286,13 @@
 #if (!(ELPP_CXX0X || ELPP_CXX11))
 #   error "Easylogging++ 9.0+ is only compatible with C++0x (or higher) compliant compiler"
 #endif  // (!(ELPP_CXX0X || ELPP_CXX11))
+
+#if ELPP_OS_WINDOWS && defined(ELPP_AS_DLL) && ELPP_THREADING_ENABLED
+#  if defined(ELPP_USE_STD_THREADING)
+#    undef ELPP_USE_STD_THREADING
+#  endif
+#endif
+
 // Headers
 #if defined(ELPP_SYSLOG)
 #   include <syslog.h>
